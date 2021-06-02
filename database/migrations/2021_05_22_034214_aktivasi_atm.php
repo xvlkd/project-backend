@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class AktivasiAtm extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('username');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+        Schema::create('AktivasiATM', function(Blueprint $table){
+            $table->id('id_aktivasi');
+            $table->integer('card_number');
+            $table->string('account_name');
+            $table->string('procedure');
+            $table->string('operator');
+            $table->string('corrector');
+            $table->string('supervisor');
             $table->integer('office_code');
             $table->integer('section_code');
-            $table->integer('staff_code');
-            $table->timestamp('last_login')->nullable();
-            $table->rememberToken();
+            $table->integer('id_user');
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::drop('AktivasiATM');
     }
 }
