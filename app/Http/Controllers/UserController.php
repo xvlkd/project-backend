@@ -54,7 +54,7 @@ class UserController extends Controller
                     'access_token' => $tokenResult,
                 ]
             ];
-            $user->last_login = Carbon::now()->toDateTimeString();
+            $user->last_login = Carbon::now();
             return response()->json($response, 200);
         }
     }

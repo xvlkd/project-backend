@@ -24,13 +24,13 @@ use Illuminate\Support\Facades\Route;
 });
 */
 
-/*Route::get('/user', function (Request $request) {
+Route::get('user', function (Request $request) {
     return $request->user();
-})->middleware('auth:api');*/
+})->middleware('auth:api');
 
 
 //LoginLOgout
-Route::post('login', 'UserController@login');
+Route::post('login', [UserController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::post('logout', [UserController::class, 'logout']);
     Route::post('logoutall', [UserController::class, 'logoutall']);
@@ -61,3 +61,10 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     //CallCenterLog
 });
+/*
+Route::get('/problems', [ProblemRecordController::class, 'index']);
+    Route::post('/problems', [ProblemRecordController::class, 'tambah']);
+    Route::post('/problems/{id_problemrecord}', [ProblemRecordController::class, 'edit']);
+    Route::delete('/problems/delete/{id_problemrecord}', [ProblemRecordController::class, 'hapus']);
+
+    */
