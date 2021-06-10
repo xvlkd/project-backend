@@ -44,15 +44,14 @@ class UserController extends Controller
                 throw new \Exception('Error in Login');
             }
 
-            $tokenResult = $user->createToken('token-auth')->plainTextToken;
+            $token = $user->createToken('token-auth')->plainTextToken;
             $response = [
                 'status' => 'success',
                 'messege' => 'Login Sukses',
                 'errors' => null,
-                'content' => [
-                    'status_code' => 200,
-                    'access_token' => $tokenResult,
-                ]
+                'status_code' => 200,
+                'token' => $token,
+                
             ];
             $user->last_login = Carbon::now();
             return response()->json($response, 200);
